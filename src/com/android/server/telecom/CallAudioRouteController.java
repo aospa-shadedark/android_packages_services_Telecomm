@@ -782,7 +782,7 @@ public class CallAudioRouteController implements CallAudioRouteAdapter {
      * Message being handled: BT_AUDIO_CONNECTED
      */
     private void handleBtAudioActive(BluetoothDevice bluetoothDevice) {
-        if (mIsPending) {
+        if (mIsPending && bluetoothDevice != null) {
             Log.i(this, "handleBtAudioActive: is pending path");
             if (Objects.equals(mPendingAudioRoute.getDestRoute().getBluetoothAddress(),
                     bluetoothDevice.getAddress())) {
@@ -801,7 +801,7 @@ public class CallAudioRouteController implements CallAudioRouteAdapter {
      * Message being handled: BT_AUDIO_DISCONNECTED
      */
     private void handleBtAudioInactive(BluetoothDevice bluetoothDevice) {
-        if (mIsPending) {
+        if (mIsPending && bluetoothDevice != null) {
             Log.i(this, "handleBtAudioInactive: is pending path");
             if (Objects.equals(mPendingAudioRoute.getOrigRoute().getBluetoothAddress(),
                     bluetoothDevice.getAddress())) {
